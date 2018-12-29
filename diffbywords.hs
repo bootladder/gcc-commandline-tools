@@ -1,7 +1,13 @@
 import Data.List
+import System.Environment
 main = do
-  file1 <- readFile "input1.txt"
-  file2 <- readFile "input2.txt"
+  args <- getArgs
+  if length args /= 2
+    then putStrLn "Need 2 filename arguments"
+    else do
+
+  file1 <- readFile $ head args
+  file2 <- readFile $ args !! 1
   let
       filterTokens = filter (not . isPrefixOf "-I")
       diffTokens l1 l2 = filter (\x -> not $ elem x l2) l1
