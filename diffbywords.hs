@@ -9,7 +9,9 @@ main = do
   file1 <- readFile $ head args
   file2 <- readFile $ args !! 1
   let
-      filterTokens = filter (not . isPrefixOf "-I")
+      f1 = filter (not . isPrefixOf "-I")
+      f2 = filter (not . isSuffixOf ".o")
+      filterTokens = f2 . f1
       diffTokens l1 l2 = filter (\x -> not $ elem x l2) l1
 
       filteredTokens1 = filterTokens $ words file1
