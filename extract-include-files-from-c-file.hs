@@ -1,3 +1,5 @@
+#!/usr/bin/env runhaskell
+
 import Data.List
 import System.Environment
 import Data.Char
